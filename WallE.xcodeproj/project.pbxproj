@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21123B297DF047007C6639 /* NasaAPIService.swift */; };
+		EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21123E297DF0C4007C6639 /* NetworkError.swift */; };
+		EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211240297DF4F4007C6639 /* MarsRovers.swift */; };
 		EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */; };
 		EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */; };
-		EBE25BF1297DE9F300EBFE5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BF0297DE9F300EBFE5B /* ViewController.swift */; };
 		EBE25BF4297DE9F300EBFE5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF2297DE9F300EBFE5B /* Main.storyboard */; };
 		EBE25BF6297DE9F500EBFE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */; };
 		EBE25BF9297DE9F500EBFE5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF7297DE9F500EBFE5B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB21123B297DF047007C6639 /* NasaAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPIService.swift; sourceTree = "<group>"; };
+		EB21123E297DF0C4007C6639 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EB211240297DF4F4007C6639 /* MarsRovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers.swift; sourceTree = "<group>"; };
 		EBE25BE9297DE9F300EBFE5B /* WallE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EBE25BF0297DE9F300EBFE5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EBE25BF3297DE9F300EBFE5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE25BF8297DE9F500EBFE5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +41,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB21123A297DEEC5007C6639 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */,
+				EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */,
+				EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */,
+				EBE25BF7297DE9F500EBFE5B /* LaunchScreen.storyboard */,
+				EBE25BFA297DE9F500EBFE5B /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EB21123D297DF053007C6639 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EB21123B297DF047007C6639 /* NasaAPIService.swift */,
+				EB21123E297DF0C4007C6639 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EB211242297DF524007C6639 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB211240297DF4F4007C6639 /* MarsRovers.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EBE25BE0297DE9F200EBFE5B = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +89,10 @@
 		EBE25BEB297DE9F300EBFE5B /* WallE */ = {
 			isa = PBXGroup;
 			children = (
-				EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */,
-				EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */,
-				EBE25BF0297DE9F300EBFE5B /* ViewController.swift */,
+				EB21123A297DEEC5007C6639 /* Resources */,
 				EBE25BF2297DE9F300EBFE5B /* Main.storyboard */,
-				EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */,
-				EBE25BF7297DE9F500EBFE5B /* LaunchScreen.storyboard */,
-				EBE25BFA297DE9F500EBFE5B /* Info.plist */,
+				EB21123D297DF053007C6639 /* Networking */,
+				EB211242297DF524007C6639 /* Models */,
 			);
 			path = WallE;
 			sourceTree = "<group>";
@@ -138,9 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBE25BF1297DE9F300EBFE5B /* ViewController.swift in Sources */,
 				EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */,
+				EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */,
+				EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */,
 				EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */,
+				EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,12 +320,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WallE/Info.plist;
+				INFOPLIST_FILE = WallE/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,12 +347,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WallE/Info.plist;
+				INFOPLIST_FILE = WallE/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
