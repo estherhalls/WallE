@@ -10,6 +10,7 @@
 		EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21123B297DF047007C6639 /* NasaAPIService.swift */; };
 		EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21123E297DF0C4007C6639 /* NetworkError.swift */; };
 		EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211240297DF4F4007C6639 /* MarsRovers.swift */; };
+		EB211245297E013D007C6639 /* ServiceRequestingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211244297E013D007C6639 /* ServiceRequestingImageView.swift */; };
 		EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */; };
 		EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */; };
 		EBE25BF4297DE9F300EBFE5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF2297DE9F300EBFE5B /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		EB21123B297DF047007C6639 /* NasaAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaAPIService.swift; sourceTree = "<group>"; };
 		EB21123E297DF0C4007C6639 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		EB211240297DF4F4007C6639 /* MarsRovers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRovers.swift; sourceTree = "<group>"; };
+		EB211244297E013D007C6639 /* ServiceRequestingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestingImageView.swift; sourceTree = "<group>"; };
 		EBE25BE9297DE9F300EBFE5B /* WallE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EB211243297E0126007C6639 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EBE25BF2297DE9F300EBFE5B /* Main.storyboard */,
+				EB211244297E013D007C6639 /* ServiceRequestingImageView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		EBE25BE0297DE9F200EBFE5B = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				EB21123A297DEEC5007C6639 /* Resources */,
-				EBE25BF2297DE9F300EBFE5B /* Main.storyboard */,
+				EB211243297E0126007C6639 /* UI */,
 				EB21123D297DF053007C6639 /* Networking */,
 				EB211242297DF524007C6639 /* Models */,
 			);
@@ -172,6 +183,7 @@
 				EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */,
 				EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */,
 				EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */,
+				EB211245297E013D007C6639 /* ServiceRequestingImageView.swift in Sources */,
 				EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
