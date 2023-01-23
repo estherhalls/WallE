@@ -8,17 +8,37 @@
 import Foundation
 
 protocol RoverImagesServicable {
-    func fetchRoverData(from endpoint: Endpoint) async throws -> MarsRovers
+
+    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<TLD,NetworkError>) -> Void)
 }
 
 struct RoverImagesService: RoverImagesServicable {
+
+    // MARK: - Properties
     private let service = APIService()
-    func fetchRoverData(from endpoint: Endpoint) async throws -> MarsRovers {
+
+    // MARK: - Methods
+    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<TLD,NetworkError>) -> Void) {
         guard let url = endpoint.fullURL else {
-            throw NetworkError.badURL
+            completion(.failure(.badURL))
+            return
         }
-        let response = try await
-        service.perform(URLRequest(url: url))
-        return try JSONDecoder().decode(MarsRovers.self, from: response.data)
+        let request = URLRequest(url: url)
+        service.perform(request) { result in
+            switch result {
+            case .success(let data):
+                do {
+                    let tld = try
+                    data.decode(type: TLD.self)
+                    completion(.success(tld))
+                } catch {
+                    completion(.failure(.errorDecoding))
+                }
+            case .failure(let error):
+                print(error.errorDescription!)
+            }
+        }
     }
 }
+
+

@@ -17,6 +17,7 @@
 		EB211251297E0FBB007C6639 /* RoverImagesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211250297E0FBB007C6639 /* RoverImagesDataProvider.swift */; };
 		EB211257297E3A38007C6639 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211256297E3A38007C6639 /* Endpoint.swift */; };
 		EB211259297E4179007C6639 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211258297E4179007C6639 /* APIService.swift */; };
+		EB21125D297F2E06007C6639 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21125C297F2E06007C6639 /* DataExtension.swift */; };
 		EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */; };
 		EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */; };
 		EBE25BF4297DE9F300EBFE5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF2297DE9F300EBFE5B /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		EB211250297E0FBB007C6639 /* RoverImagesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImagesDataProvider.swift; sourceTree = "<group>"; };
 		EB211256297E3A38007C6639 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		EB211258297E4179007C6639 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		EB21125C297F2E06007C6639 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		EBE25BE9297DE9F300EBFE5B /* WallE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBE25BEE297DE9F300EBFE5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				EB21123E297DF0C4007C6639 /* NetworkError.swift */,
 				EB211256297E3A38007C6639 /* Endpoint.swift */,
 				EB211258297E4179007C6639 /* APIService.swift */,
+				EB21125C297F2E06007C6639 /* DataExtension.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */,
 				EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */,
 				EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */,
+				EB21125D297F2E06007C6639 /* DataExtension.swift in Sources */,
 				EB21124B297E042A007C6639 /* RoverImageTableViewCell.swift in Sources */,
 				EB211245297E013D007C6639 /* ServiceRequestingImageView.swift in Sources */,
 				EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */,

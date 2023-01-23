@@ -27,22 +27,13 @@ class RoverImageTableViewCell: UITableViewCell {
     }
     
     private func fetchImage(with roverImage: String) {
-        guard let url = URL(string: roverImage) else {
+        guard let imageURL = URL(string: roverImage) else {
             return
         }
-        requestingImageView.fetchImage(using: url)
+        requestingImageView.fetchImage(using: imageURL)
     }
-    
-    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
 }
+
+//extension RoverImageTableViewCell: RoverImageTableViewCellDelegate {
+//
+//}
