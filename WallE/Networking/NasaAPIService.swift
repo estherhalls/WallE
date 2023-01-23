@@ -9,9 +9,38 @@ import Foundation
 
 struct NasaAPIService {
     
+    // MARK: - URL
+    static let baseURLString = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
+    static let kPhotosComponent = "photos"
+    static let kAPIKeyKey = "api_key"
+    static let kAPIKeyValue = "xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6"
+    static let kEarthDateKey = "earth_date"
+    
     // Data Task
-    func perform(_ request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: request) { dTaskData, response, error in
+    static func fetchRoverData(with roverComponent: String, dateValue: String, completion: @escaping (Result<MarsRovers, NetworkError>) -> Void) {
+        // Get URL
+        guard let baseURL = URL(string: baseURLString) else {
+            completion(.failure(.badURL(baseURLString)))
+            return
+        }
+        // Compose Final URL
+        let roverURL = baseURL.appending(path: roverComponent)
+        let photosURL = roverURL.appending(path: kPhotosComponent)
+        /// Add Query items with URLComponent Struct
+        var urlComponents = URLComponents(url: photosURL, resolvingAgainstBaseURL: true)
+        /// Query Items
+        let dateQuery = URLQueryItem(name: kEarthDateKey, value: dateValue)
+        let apiKeyQuery = URLQueryItem(name: kAPIKeyKey, value: kAPIKeyValue)
+        urlComponents?.queryItems = [dateQuery, apiKeyQuery]
+        
+        guard let finalURL = urlComponents?.url else {
+            completion(.failure(.badURL(baseURLString)))
+            return
+        }
+        print(finalURL)
+        
+        // Start Data Task
+        URLSession.shared.dataTask(with: finalURL) { dTaskData, response, error in
             if let error {
                 completion(.failure(.requestError(error)))
             }
@@ -24,7 +53,8 @@ struct NasaAPIService {
                 return
             }
             do {
-                guard let marsRovers = try? JSONDecoder().decode(MarsRovers.self, from: data) else {
+                guard let marsRovers = try? JSONDecoder().decode(MarsRovers.self, from: data)
+                else {
                     completion(.failure(.couldNotUnwrap))
                     return
                 }
