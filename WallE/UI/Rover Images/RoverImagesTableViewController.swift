@@ -13,14 +13,18 @@ class RoverImagesTableViewController: UITableViewController {
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    private var roverSegments: ["spirit", "curiosity", "opportunity"] {
-        if roverSegmentedControl.selectedSegmentIndex == 0 {
-            return 
-        }
-    }
+    private var viewModel: RoverImagesViewModel!
+    var roverData = [MarsRovers]()
+//    private var roverSegments: [String] = ["spirit", "curiosity", "opportunity"] {
+//        if roverSegmentedControl.selectedSegmentIndex == 0 {
+//            return
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = RoverImagesViewModel()
+        roverSegmentedControl.addTarget(self, action: #selector(roverSegmentedControlValueChanged(_:)), for: .valueChanged)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,17 +33,22 @@ class RoverImagesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 // MARK: - Methods
-    
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    @objc func roverSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.fetchData(for: Endpoint.spirit(<#T##String#>))
+        case 1:
+            viewModel.fetchData(for: Endpoint.curiosity(<#T##String#>))
+        case 2:
+            viewModel.fetchData(for: Endpoint.opportunity(<#T##String#>))
+        default: break
+        }
     }
+    // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return roverData.count
     }
 
     /*
