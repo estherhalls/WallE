@@ -13,7 +13,6 @@
 		EB211245297E013D007C6639 /* ServiceRequestingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211244297E013D007C6639 /* ServiceRequestingImageView.swift */; };
 		EB211249297E038D007C6639 /* RoverImagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211248297E038D007C6639 /* RoverImagesTableViewController.swift */; };
 		EB21124B297E042A007C6639 /* RoverImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21124A297E042A007C6639 /* RoverImageTableViewCell.swift */; };
-		EB21124D297E0D6C007C6639 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21124C297E0D6C007C6639 /* Endpoint.swift */; };
 		EB21124F297E0F1B007C6639 /* RoverImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB21124E297E0F1B007C6639 /* RoverImagesViewModel.swift */; };
 		EB211251297E0FBB007C6639 /* RoverImagesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB211250297E0FBB007C6639 /* RoverImagesDataProvider.swift */; };
 		EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE25BEC297DE9F300EBFE5B /* AppDelegate.swift */; };
@@ -30,7 +29,6 @@
 		EB211244297E013D007C6639 /* ServiceRequestingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRequestingImageView.swift; sourceTree = "<group>"; };
 		EB211248297E038D007C6639 /* RoverImagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImagesTableViewController.swift; sourceTree = "<group>"; };
 		EB21124A297E042A007C6639 /* RoverImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImageTableViewCell.swift; sourceTree = "<group>"; };
-		EB21124C297E0D6C007C6639 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		EB21124E297E0F1B007C6639 /* RoverImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImagesViewModel.swift; sourceTree = "<group>"; };
 		EB211250297E0FBB007C6639 /* RoverImagesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImagesDataProvider.swift; sourceTree = "<group>"; };
 		EBE25BE9297DE9F300EBFE5B /* WallE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +68,6 @@
 			children = (
 				EB21123B297DF047007C6639 /* NasaAPIService.swift */,
 				EB21123E297DF0C4007C6639 /* NetworkError.swift */,
-				EB21124C297E0D6C007C6639 /* Endpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -213,7 +210,6 @@
 				EBE25BED297DE9F300EBFE5B /* AppDelegate.swift in Sources */,
 				EB211251297E0FBB007C6639 /* RoverImagesDataProvider.swift in Sources */,
 				EB21124F297E0F1B007C6639 /* RoverImagesViewModel.swift in Sources */,
-				EB21124D297E0D6C007C6639 /* Endpoint.swift in Sources */,
 				EB21123F297DF0C4007C6639 /* NetworkError.swift in Sources */,
 				EB21123C297DF047007C6639 /* NasaAPIService.swift in Sources */,
 				EBE25BEF297DE9F300EBFE5B /* SceneDelegate.swift in Sources */,

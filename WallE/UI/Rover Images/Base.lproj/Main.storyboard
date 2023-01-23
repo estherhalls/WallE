@@ -97,6 +97,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="05N-rX-JNW"/>
+                    <connections>
+                        <outlet property="datePicker" destination="syq-7B-HBj" id="yhL-Cg-V7A"/>
+                        <outlet property="roverSegmentedControl" destination="i79-kd-res" id="fbX-ca-x8Y"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eea-5C-wsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

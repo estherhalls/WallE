@@ -9,6 +9,16 @@ import UIKit
 
 class RoverImagesTableViewController: UITableViewController {
 
+    // MARK: - Outlets
+    @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    private var roverSegments: ["spirit", "curiosity", "opportunity"] {
+        if roverSegmentedControl.selectedSegmentIndex == 0 {
+            return 
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +28,8 @@ class RoverImagesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+// MARK: - Methods
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

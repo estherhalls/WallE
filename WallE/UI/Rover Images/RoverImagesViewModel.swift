@@ -9,6 +9,10 @@ import Foundation
 
 class RoverImagesViewModel {
     
+    // Source of Truth
+    private let service = NasaAPIService()
+    
+    
     
     
 } // End of Class
