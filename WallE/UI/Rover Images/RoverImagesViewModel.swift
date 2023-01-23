@@ -9,8 +9,10 @@ import Foundation
 
 class RoverImagesViewModel {
     
+    // MARK: - Properties
     // Source of Truth
     private let service: RoverImagesServicable
+
     var rovers: MarsRovers?
     
     init(service: RoverImagesServicable = RoverImagesService()) {

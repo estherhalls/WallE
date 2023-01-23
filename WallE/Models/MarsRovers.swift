@@ -6,11 +6,16 @@
 //
 
 import Foundation
+
+struct TLD: Decodable {
+    let photos: [MarsRovers]
+}
+
 struct MarsRovers: Decodable {
     // Date is "yyyy-mm-dd"
-    let earthDate: String
-    let camera: [CameraDict]
-    let rover: [RoverDict]
+    var earthDate: String
+    let camera: CameraDict
+    let rover: RoverDict
     let imageURL: String
     
     

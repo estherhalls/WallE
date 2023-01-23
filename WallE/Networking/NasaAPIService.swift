@@ -20,7 +20,7 @@ struct NasaAPIService {
     static func fetchRoverData(with roverComponent: String, dateValue: String, completion: @escaping (Result<MarsRovers, NetworkError>) -> Void) {
         // Get URL
         guard let baseURL = URL(string: baseURLString) else {
-            completion(.failure(.badURL(baseURLString)))
+            completion(.failure(.badURL))
             return
         }
         // Compose Final URL
@@ -34,7 +34,7 @@ struct NasaAPIService {
         urlComponents?.queryItems = [dateQuery, apiKeyQuery]
         
         guard let finalURL = urlComponents?.url else {
-            completion(.failure(.badURL(baseURLString)))
+            completion(.failure(.badURL))
             return
         }
         print(finalURL)
