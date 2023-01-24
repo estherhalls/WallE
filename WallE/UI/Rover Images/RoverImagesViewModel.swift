@@ -14,7 +14,7 @@ protocol RoverImagesViewModelDelegate: AnyObject {
 class RoverImagesViewModel {
     
     // MARK: - Properties
-//    var topLevel: TLD?
+    var topLevel: TLD?
     var roversArray: [MarsRovers] = []
 //    var roverData: MarsRovers?
     
@@ -32,8 +32,8 @@ class RoverImagesViewModel {
         service.fetchData(from: endpoint) { [weak self] result in
             switch result {
             case .success(let data):
-
-                self?.roversArray = data
+                self?.topLevel = data
+                self?.roversArray = data.photos
                 DispatchQueue.main.async {
                     self?.delegate?.updateViews()
                 }

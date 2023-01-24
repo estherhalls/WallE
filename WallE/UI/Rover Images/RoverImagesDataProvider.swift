@@ -9,7 +9,7 @@ import Foundation
 
 protocol RoverImagesServicable {
 
-    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<[MarsRovers],NetworkError>) -> Void)
+    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<TLD,NetworkError>) -> Void)
 }
 
 struct RoverImagesService: RoverImagesServicable {
@@ -18,7 +18,7 @@ struct RoverImagesService: RoverImagesServicable {
     private let service = APIService()
 
     // MARK: - Methods
-    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<[MarsRovers],NetworkError>) -> Void) {
+    func fetchData(from endpoint: Endpoint, completion: @escaping (Result<TLD,NetworkError>) -> Void) {
         guard let url = endpoint.fullURL else {
             completion(.failure(.badURL))
             return
@@ -29,7 +29,7 @@ struct RoverImagesService: RoverImagesServicable {
             case .success(let data):
                 do {
                     let data = try
-                    data.decode(type: [MarsRovers].self)
+                    data.decode(type: TLD.self)
                     completion(.success(data))
                 } catch {
                     completion(.failure(.errorDecoding))

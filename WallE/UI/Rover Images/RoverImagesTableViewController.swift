@@ -17,26 +17,29 @@ class RoverImagesTableViewController: UITableViewController {
     private var viewModel: RoverImagesViewModel!
     var tld: TLD?
     var dateFormatter = DateFormatter.string()
-   
-        let defaultDate = Date()
-     
-    private var setDate: String {
-        let setDate = dateFormatter.string(from: defaultDate)
-        return setDate
-    }
+    
+    let defaultDate = Date()
+    var setDate: String?
+    
+    //    private var setDate: String {
+    //        let setDate = dateFormatter.string(from: defaultDate)
+    //        return setDate
+    //    }
     
     
     private var filteredRovers: [MarsRovers] {
+        let defaultDateString = dateFormatter.string(from: defaultDate)
+        let dateValue = setDate ?? defaultDateString
         let selectedIndex = self.roverSegmentedControl.selectedSegmentIndex
         switch selectedIndex {
         case 0:
-            viewModel.loadData(from: .spirit(setDate))
+            viewModel.loadData(from: .spirit(dateValue))
             return tld?.photos.filter { $0.rover.name == "spirit" } ?? []
         case 1:
-            viewModel.loadData(from: .curiosity(setDate))
+            viewModel.loadData(from: .curiosity(dateValue))
             return tld?.photos.filter { $0.rover.name == "curiosity" } ?? []
         case 2:
-            viewModel.loadData(from: .opportunity(setDate))
+            viewModel.loadData(from: .opportunity(dateValue))
             return tld?.photos.filter { $0.rover.name == "opportunity" } ?? []
         default:
             return []
@@ -66,23 +69,26 @@ class RoverImagesTableViewController: UITableViewController {
     }
     
     @IBAction func roverSegmentedControlValueChanged(_ sender: UISegmentedControl) {
-        let dateValue = setDate
-        switch sender.selectedSegmentIndex {
-        case 0:
-            viewModel.loadData(from: .spirit(dateValue))
-            
-            break
-        case 1:
-            viewModel.loadData(from: .curiosity(dateValue))
-            
-            break
-        case 2:
-            viewModel.loadData(from: .opportunity(dateValue))
-            break
-            
-        default:
-            break
-        }
+        tableView.reloadData()
+        
+//        let defaultDateString = dateFormatter.string(from: defaultDate)
+//        let dateValue = setDate ?? defaultDateString
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            viewModel.loadData(from: .spirit(dateValue))
+//
+//            break
+//        case 1:
+//            viewModel.loadData(from: .curiosity(dateValue))
+//
+//            break
+//        case 2:
+//            viewModel.loadData(from: .opportunity(dateValue))
+//            break
+//
+//        default:
+//            break
+//        }
     }
     
     // MARK: - Table view data source
@@ -94,7 +100,9 @@ class RoverImagesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "roverImageCell", for: indexPath) as? RoverImageTableViewCell else { return UITableViewCell()}
         let cellData = filteredRovers[indexPath.row]
-        cell.configureCell(with: cellData)
+//        cell.configureCell(with: cellData)
+        cell.textLabel?.text = "\(cellData.rover.name)"
+        cell.detailTextLabel?.text = "\(cellData.camera.fullName)"
         return cell
     }
     
@@ -113,6 +121,6 @@ class RoverImagesTableViewController: UITableViewController {
 
 extension RoverImagesTableViewController: RoverImagesViewModelDelegate {
     func updateViews() {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
