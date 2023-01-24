@@ -17,7 +17,7 @@ struct NasaAPIService {
     static let kEarthDateKey = "earth_date"
     
     // Data Task
-    static func fetchRoverData(with roverComponent: String, dateValue: String, completion: @escaping (Result<MarsRovers, NetworkError>) -> Void) {
+    static func fetchRoverData(with roverComponent: String, dateValue: String, completion: @escaping (Result<TLD, NetworkError>) -> Void) {
         // Get URL
         guard let baseURL = URL(string: baseURLString) else {
             completion(.failure(.badURL))
@@ -53,12 +53,12 @@ struct NasaAPIService {
                 return
             }
             do {
-                guard let marsRovers = try? JSONDecoder().decode(MarsRovers.self, from: data)
+                guard let tld = try? JSONDecoder().decode(TLD.self, from: data)
                 else {
                     completion(.failure(.couldNotUnwrap))
                     return
                 }
-                completion(.success(marsRovers))
+                completion(.success(tld))
             }
             completion(.failure(.errorDecoding))
             
