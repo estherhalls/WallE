@@ -37,7 +37,7 @@ enum Endpoint {
         guard var baseURL = URL.baseURL else {
             return nil
         }
-        /// Switch on self, self being the czase of the enum, and append the correct path component to the url
+        /// Switch on self, self being the case of the enum, and append the correct path component to the url
         switch self {
         case .curiosity(let dateValue), .opportunity(let dateValue), .spirit(let dateValue):
             baseURL.appendPathComponent(roverComponent)
@@ -50,7 +50,8 @@ enum Endpoint {
             }
             /// Add Query Items
             let dateQuery = URLQueryItem(name: "earth_date", value: dateValue)
-            let apiQuery = URLQueryItem(name: "api_key", value: "xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6")
+            // CHANGE DEMO_KEY TO xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
+            let apiQuery = URLQueryItem(name: "api_key", value: "DEMO_KEY")
             urlComponents.queryItems = [dateQuery, apiQuery]
             return urlComponents.url
         }

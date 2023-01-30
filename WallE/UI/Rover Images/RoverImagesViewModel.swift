@@ -32,14 +32,16 @@ class RoverImagesViewModel {
         service.fetchData(from: endpoint) { [weak self] result in
             switch result {
             case .success(let data):
+//                self?.roversArray = data
                 self?.topLevel = data
                 self?.roversArray = data.photos
-                DispatchQueue.main.async {
-                    self?.delegate?.updateViews()
-                }
-            case .failure(let error):
-                print(error.errorDescription!)
-                
+//                DispatchQueue.main.async {
+//                    self?.delegate?.updateViews()
+//
+//                }
+            case .failure:
+//                print(error.errorDescription!)
+                print("There was an error retrieving data from \(endpoint.fullURL)")
             }
         }
     }

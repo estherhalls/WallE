@@ -21,32 +21,28 @@ class RoverImagesTableViewController: UITableViewController {
     let defaultDate = Date()
     var setDate: String?
     
-    //    private var setDate: String {
-    //        let setDate = dateFormatter.string(from: defaultDate)
-    //        return setDate
-    //    }
-    
-    
     private var filteredRovers: [MarsRovers] {
-        let defaultDateString = dateFormatter.string(from: defaultDate)
+//        let defaultDateString = dateFormatter.string(from: defaultDate)
+        let defaultDateString = "2015-01-29"
         let dateValue = setDate ?? defaultDateString
         let selectedIndex = self.roverSegmentedControl.selectedSegmentIndex
         switch selectedIndex {
         case 0:
             viewModel.loadData(from: .spirit(dateValue))
-            return tld?.photos.filter { $0.rover.name == "spirit" } ?? []
+            //            return tld?.photos.filter { $0.rover.name == "spirit" } ?? []
+            return viewModel.roversArray
         case 1:
             viewModel.loadData(from: .curiosity(dateValue))
-            return tld?.photos.filter { $0.rover.name == "curiosity" } ?? []
+            //            return tld?.photos.filter { $0.rover.name == "curiosity" } ?? []
+            return viewModel.roversArray
         case 2:
             viewModel.loadData(from: .opportunity(dateValue))
-            return tld?.photos.filter { $0.rover.name == "opportunity" } ?? []
+            //            return tld?.photos.filter { $0.rover.name == "opportunity" } ?? []
+            return viewModel.roversArray
         default:
             return []
         }
-        
     }
-    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -58,37 +54,36 @@ class RoverImagesTableViewController: UITableViewController {
         roverSegmentedControl.addTarget(self, action: #selector(roverSegmentedControlValueChanged(_:)), for: .valueChanged)
     }
     
-    
     // MARK: - Methods
-    
     /// I need dateValue to escape this function to be assigned to the earthDate value used in the segmented view
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         let selectedDate = sender.date
         let setDate = dateFormatter.string(from: selectedDate)
         print(setDate)
+        tableView.reloadData()
     }
     
     @IBAction func roverSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         tableView.reloadData()
         
-//        let defaultDateString = dateFormatter.string(from: defaultDate)
-//        let dateValue = setDate ?? defaultDateString
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            viewModel.loadData(from: .spirit(dateValue))
-//
-//            break
-//        case 1:
-//            viewModel.loadData(from: .curiosity(dateValue))
-//
-//            break
-//        case 2:
-//            viewModel.loadData(from: .opportunity(dateValue))
-//            break
-//
-//        default:
-//            break
-//        }
+        //        let defaultDateString = dateFormatter.string(from: defaultDate)
+        //        let dateValue = setDate ?? defaultDateString
+        //        switch sender.selectedSegmentIndex {
+        //        case 0:
+        //            viewModel.loadData(from: .spirit(dateValue))
+        //
+        //            break
+        //        case 1:
+        //            viewModel.loadData(from: .curiosity(dateValue))
+        //
+        //            break
+        //        case 2:
+        //            viewModel.loadData(from: .opportunity(dateValue))
+        //            break
+        //
+        //        default:
+        //            break
+        //        }
     }
     
     // MARK: - Table view data source
@@ -100,9 +95,9 @@ class RoverImagesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "roverImageCell", for: indexPath) as? RoverImageTableViewCell else { return UITableViewCell()}
         let cellData = filteredRovers[indexPath.row]
-//        cell.configureCell(with: cellData)
-        cell.textLabel?.text = "\(cellData.rover.name)"
-        cell.detailTextLabel?.text = "\(cellData.camera.fullName)"
+        cell.configureCell(with: cellData)
+        //        cell.textLabel?.text = "\(cellData.rover.name)"
+        //        cell.detailTextLabel?.text = "\(cellData.camera.fullName)"
         return cell
     }
     

@@ -12,6 +12,13 @@ struct TLD: Decodable {
 }
 
 struct MarsRovers: Decodable {
+    private enum CodingKeys: String, CodingKey {
+        case earthDate = "earth_date"
+        case camera
+        case rover
+        case imageURL = "img_src"
+    }
+    
     // Date is "yyyy-mm-dd"
     var earthDate: String
     let camera: CameraDict
