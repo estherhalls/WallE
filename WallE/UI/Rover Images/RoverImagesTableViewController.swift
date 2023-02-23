@@ -15,15 +15,14 @@ class RoverImagesTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var viewModel: RoverImagesViewModel!
-    var tld: TLD?
     var dateFormatter = DateFormatter.string()
     
     let defaultDate = Date()
     var setDate: String?
     
     private var filteredRovers: [MarsRovers] {
-//        let defaultDateString = dateFormatter.string(from: defaultDate)
-        let defaultDateString = "2015-01-29"
+        let defaultDateString = dateFormatter.string(from: defaultDate)
+//        let defaultDateString = "2015-01-29"
         let dateValue = setDate ?? defaultDateString
         let selectedIndex = self.roverSegmentedControl.selectedSegmentIndex
         switch selectedIndex {
@@ -95,12 +94,24 @@ class RoverImagesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "roverImageCell", for: indexPath) as? RoverImageTableViewCell else { return UITableViewCell()}
         let cellData = filteredRovers[indexPath.row]
-        cell.configureCell(with: cellData)
+        DispatchQueue.main.async {
+            cell.configureCell(with: cellData)
+            
+        }
         //        cell.textLabel?.text = "\(cellData.rover.name)"
         //        cell.detailTextLabel?.text = "\(cellData.camera.fullName)"
         return cell
     }
     
+//    // MARK: - Pagination
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        guard let vm = viewModel,
+//              let tld = vm.topLevel else { return }
+//
+//        let lastRoverIndex = tld.photos.count - 1
+//
+//        if indexPath.row == lastRoverIndex
+//    }
     
     
     // MARK: - Navigation

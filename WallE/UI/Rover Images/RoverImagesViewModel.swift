@@ -35,10 +35,9 @@ class RoverImagesViewModel {
 //                self?.roversArray = data
                 self?.topLevel = data
                 self?.roversArray = data.photos
-//                DispatchQueue.main.async {
-//                    self?.delegate?.updateViews()
-//
-//                }
+                DispatchQueue.main.async {
+                    self?.delegate?.updateViews()
+                }
             case .failure:
 //                print(error.errorDescription!)
                 print("There was an error retrieving data from \(endpoint.fullURL)")

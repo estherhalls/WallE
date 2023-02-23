@@ -51,8 +51,9 @@ enum Endpoint {
             /// Add Query Items
             let dateQuery = URLQueryItem(name: "earth_date", value: dateValue)
             // CHANGE DEMO_KEY TO xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
-            let apiQuery = URLQueryItem(name: "api_key", value: "DEMO_KEY")
-            urlComponents.queryItems = [dateQuery, apiQuery]
+            let apiQuery = URLQueryItem(name: "api_key", value: "xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6")
+            let pageQuery = URLQueryItem(name: "page", value: "1")
+            urlComponents.queryItems = [dateQuery, apiQuery, pageQuery]
             return urlComponents.url
         }
     }
