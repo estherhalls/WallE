@@ -16,7 +16,6 @@ class RoverImagesViewModel {
     // MARK: - Properties
     var topLevel: TLD?
     var roversArray: [MarsRovers] = []
-//    var roverData: MarsRovers?
     
     private let service: RoverImagesServicable
     
@@ -28,21 +27,62 @@ class RoverImagesViewModel {
     }
     
     // fetches an array of images from specific date/rover endpoint
-    func loadData(from endpoint: Endpoint) {
-        service.fetchData(from: endpoint) { [weak self] result in
+    func loadSpirit(date: String) {
+        service.fetchData(from: .spirit(date)) { [weak self] result in
             switch result {
             case .success(let data):
-//                self?.roversArray = data
-                self?.topLevel = data
-                self?.roversArray = data.photos
                 DispatchQueue.main.async {
+                self?.topLevel = data
+                    self?.roversArray.append(contentsOf: data.photos)
                     self?.delegate?.updateViews()
                 }
             case .failure:
-//                print(error.errorDescription!)
-                print("There was an error retrieving data from \(endpoint.fullURL)")
+                print("There was an error retrieving data")
             }
         }
     }
+    func loadCuriosity(date: String) {
+        service.fetchData(from: .curiosity(date)) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                self?.topLevel = data
+                    self?.roversArray.append(contentsOf: data.photos)
+                    self?.delegate?.updateViews()
+                }
+            case .failure:
+                print("There was an error retrieving data")
+            }
+        }
+    }
+    func loadOpportunity(date: String) {
+        service.fetchData(from: .opportunity(date)) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                self?.topLevel = data
+                    self?.roversArray.append(contentsOf: data.photos)
+                    self?.delegate?.updateViews()
+                }
+            case .failure:
+                print("There was an error retrieving data")
+            }
+        }
+    }
+//    func loadData(from endpoint: Endpoint) {
+//        service.fetchData(from: endpoint) { [weak self] result in
+//            switch result {
+//            case .success(let data):
+//                DispatchQueue.main.async {
+//                self?.topLevel = data
+//                self?.roversArray = data.photos
+//                    self?.delegate?.updateViews()
+//                }
+//            case .failure:
+//                print("There was an error retrieving data from \(endpoint.fullURL!)")
+//            }
+//        }
+//    }
+    
     
 } // End of Class

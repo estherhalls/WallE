@@ -19,12 +19,12 @@ class RoverImageTableViewCell: UITableViewCell {
 //    var camera: CameraDict?
 //    var rover: RoverDict?
     
+    var viewModel: RoverImagesCellViewModel!
+    
     // MARK: - Methods
     
     private func fetchImage(with roverImage: String) {
-        guard let imageURL = URL(string: roverImage) else {
-            return
-        }
+        guard let imageURL = URL(string: roverImage) else { return }
         requestingImageView.fetchImage(using: imageURL)
     }
     
