@@ -29,9 +29,11 @@ class RoverImageTableViewCell: UITableViewCell {
     }
     
     func configureCell(with data: MarsRovers) {
-        roverNameLabel.text = data.rover.name
-        cameraNameLabel.text = data.camera.fullName
-        fetchImage(with: data.imageURL)
+        DispatchQueue.main.async {
+            self.roverNameLabel.text = data.rover.name
+            self.cameraNameLabel.text = data.camera.fullName
+            self.fetchImage(with: data.imageURL)
+        }
     }
 }
 

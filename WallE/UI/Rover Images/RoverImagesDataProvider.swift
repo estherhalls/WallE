@@ -30,6 +30,7 @@ struct RoverImagesService: RoverImagesServicable {
                 do {
                     let data = try
                     data.decode(type: TLD.self)
+                    print("Data URL: \(url)")
                     completion(.success(data))
                 } catch {
                     completion(.failure(.errorDecoding))
