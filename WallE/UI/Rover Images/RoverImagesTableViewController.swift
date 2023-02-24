@@ -65,7 +65,8 @@ class RoverImagesTableViewController: UITableViewController {
     @IBAction func roverSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         tableView.reloadData()
         
-        let defaultDateString = dateFormatter.string(from: defaultDate)
+//        let defaultDateString = dateFormatter.string(from: defaultDate)
+        let defaultDateString = "2015-01-29"
         let dateValue = setDate ?? defaultDateString
         switch sender.selectedSegmentIndex {
         case 0:
