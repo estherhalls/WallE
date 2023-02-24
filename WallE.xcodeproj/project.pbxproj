@@ -22,7 +22,6 @@
 		EBE25BF4297DE9F300EBFE5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF2297DE9F300EBFE5B /* Main.storyboard */; };
 		EBE25BF6297DE9F500EBFE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */; };
 		EBE25BF9297DE9F500EBFE5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBE25BF7297DE9F500EBFE5B /* LaunchScreen.storyboard */; };
-		EBFB920A297F449F00AF3337 /* RoverImagesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB9209297F449F00AF3337 /* RoverImagesCellViewModel.swift */; };
 		EBFB920C297F78DB00AF3337 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB920B297F78DB00AF3337 /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		EBE25BF5297DE9F500EBFE5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE25BF8297DE9F500EBFE5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBE25BFA297DE9F500EBFE5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBFB9209297F449F00AF3337 /* RoverImagesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImagesCellViewModel.swift; sourceTree = "<group>"; };
 		EBFB920B297F78DB00AF3337 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +114,6 @@
 				EB211250297E0FBB007C6639 /* RoverImagesDataProvider.swift */,
 				EB211248297E038D007C6639 /* RoverImagesTableViewController.swift */,
 				EB21124A297E042A007C6639 /* RoverImageTableViewCell.swift */,
-				EBFB9209297F449F00AF3337 /* RoverImagesCellViewModel.swift */,
 			);
 			path = "Rover Images";
 			sourceTree = "<group>";
@@ -228,7 +225,6 @@
 				EB21124B297E042A007C6639 /* RoverImageTableViewCell.swift in Sources */,
 				EB211245297E013D007C6639 /* ServiceRequestingImageView.swift in Sources */,
 				EBFB920C297F78DB00AF3337 /* DateFormatter.swift in Sources */,
-				EBFB920A297F449F00AF3337 /* RoverImagesCellViewModel.swift in Sources */,
 				EB211241297DF4F4007C6639 /* MarsRovers.swift in Sources */,
 				EB211257297E3A38007C6639 /* Endpoint.swift in Sources */,
 				EB211259297E4179007C6639 /* APIService.swift in Sources */,

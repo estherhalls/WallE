@@ -14,15 +14,7 @@ class RoverImageTableViewCell: UITableViewCell {
     @IBOutlet weak var cameraNameLabel: UILabel!
     @IBOutlet weak var requestingImageView: ServiceRequestingImageView!
     
-//    // MARK: - Properties
-//    var data: MarsRovers?
-//    var camera: CameraDict?
-//    var rover: RoverDict?
-    
-    var viewModel: RoverImagesCellViewModel!
-    
     // MARK: - Methods
-    
     private func fetchImage(with roverImage: String) {
         guard let imageURL = URL(string: roverImage) else { return }
         requestingImageView.fetchImage(using: imageURL)
@@ -36,7 +28,3 @@ class RoverImageTableViewCell: UITableViewCell {
         }
     }
 }
-
-//extension RoverImageTableViewCell: RoverImagesViewModelDelegate {
-//
-//}

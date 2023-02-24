@@ -15,10 +15,8 @@ class RoverImagesTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var viewModel: RoverImagesViewModel!
+    var imageService: ServiceRequestingImageView!
     var dateFormatter = DateFormatter.string()
-    
-    //    var setDate: String?
-    let defaultDate = Date()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -86,6 +84,30 @@ class RoverImagesTableViewController: UITableViewController {
             cell = roverCell
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = viewModel.roversArray
+        let resource = data[indexPath.row]
+        guard let cellImageURL = URL(string: resource.imageURL) else { return }
+        imageService.passImage(from: cellImageURL) { image in
+            if let image = image {
+                // Create a full-screen image view and display the image
+                let newImageView = UIImageView(image: image)
+                newImageView.frame = UIScreen.main.bounds
+                newImageView.backgroundColor = .black
+                newImageView.contentMode = .scaleAspectFit
+                newImageView.isUserInteractionEnabled = true
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissFullscreenImage))
+                newImageView.addGestureRecognizer(tap)
+                self.view.addSubview(newImageView)
+            }
+        }
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        // Tap out of image to return to table view
+        sender.view?.removeFromSuperview()
     }
     
 } // End of Class
