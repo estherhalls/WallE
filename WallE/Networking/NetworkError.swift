@@ -11,7 +11,7 @@ import Foundation
 enum NetworkError: Error, LocalizedError {
     case unexpectedError
     case requestError(Error)
-    case badURL(String?)
+    case badURL
     case couldNotUnwrap
     case errorDecoding
     

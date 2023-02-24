@@ -9,11 +9,12 @@ import UIKit
 
 class ServiceRequestingImageView: UIImageView {
     
-    let service = NasaAPIService()
+    let service = APIService()
     
     func fetchImage(using url: URL) {
         let request = URLRequest(url: url)
-        service.perform(request) { [weak self] result in
+        service.perform(request) { [weak self]
+            result in
             switch result {
             case .success(let data):
                 guard let image = UIImage(data: data) else {
@@ -31,9 +32,9 @@ class ServiceRequestingImageView: UIImageView {
     }
     
     func setDefaultImage() {
-        contentMode = .scaleAspectFit
-        self.image = UIImage(systemName: "mountain.2")
+        DispatchQueue.main.async {
+            self.contentMode = .scaleAspectFit
+            self.image = UIImage(systemName: "mountain.2")
+        }
     }
-    
-    
 }

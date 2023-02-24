@@ -8,93 +8,88 @@
 import UIKit
 
 class RoverImagesTableViewController: UITableViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var roverSegmentedControl: UISegmentedControl!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    private var roverSegments: ["spirit", "curiosity", "opportunity"] {
-        if roverSegmentedControl.selectedSegmentIndex == 0 {
-            return 
+    // MARK: - Properties
+    private var viewModel: RoverImagesViewModel!
+    var imageService: ServiceRequestingImageView!
+    var dateFormatter = DateFormatter.string()
+    
+    // MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewModel = RoverImagesViewModel(delegate: self)
+        // Date Picker
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
+        // Segmented Control
+        roverSegmentedControl.addTarget(self, action: #selector(roverSegmentedControlValueChanged(_:)), for: .valueChanged)
+        // Initial loaded table view
+        filterData()
+    }
+    
+    // MARK: - Methods
+    func filterData() {
+        let selectedDate = datePicker.date
+        let dateValue = dateFormatter.string(from: selectedDate)
+        
+        switch roverSegmentedControl.selectedSegmentIndex {
+        case 0:
+            viewModel.loadData(endpoint: .curiosity(dateValue))
+            break
+        case 1:
+            viewModel.loadData(endpoint: .opportunity(dateValue))
+            break
+        case 2:
+            viewModel.loadData(endpoint: .spirit(dateValue))
+            break
+        default:
+            break
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        filterData()
+    }
+    
+    @IBAction func roverSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+        filterData()
+    }
+    
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.roversArray.isEmpty {
+            return 1
+        } else {
+            return viewModel.roversArray.count
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-// MARK: - Methods
-    
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell: UITableViewCell
+        
+        if viewModel.roversArray.isEmpty {
+            cell = tableView.dequeueReusableCell(withIdentifier: "noImagesCell", for: indexPath)
+            cell.textLabel?.text = "This rover took no images on this date."
+        } else {
+            guard let roverCell = tableView.dequeueReusableCell(withIdentifier: "roverImageCell", for: indexPath) as? RoverImageTableViewCell else { return UITableViewCell()}
+            let cellData = viewModel.roversArray[indexPath.row]
+            
+            roverCell.configureCell(with: cellData)
+            cell = roverCell
+        }
         return cell
     }
-    */
+    
+} // End of Class
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+extension RoverImagesTableViewController: RoverImagesViewModelDelegate {
+    func updateViews() {
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

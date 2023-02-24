@@ -9,7 +9,6 @@ import Foundation
 
 extension URL {
     /// enum cannot contain stored properties, so adding base URL must be static
-    /// https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
     static let baseURL = URL(string:"https://api.nasa.gov/mars-photos/api/v1/rovers/")
 }
 
@@ -37,7 +36,7 @@ enum Endpoint {
         guard var baseURL = URL.baseURL else {
             return nil
         }
-        /// Switch on self, self being the czase of the enum, and append the correct path component to the url
+        /// Switch on self, self being the case of the enum, and append the correct path component to the url
         switch self {
         case .curiosity(let dateValue), .opportunity(let dateValue), .spirit(let dateValue):
             baseURL.appendPathComponent(roverComponent)
@@ -50,8 +49,10 @@ enum Endpoint {
             }
             /// Add Query Items
             let dateQuery = URLQueryItem(name: "earth_date", value: dateValue)
+            // CHANGE DEMO_KEY TO xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
             let apiQuery = URLQueryItem(name: "api_key", value: "xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6")
-            urlComponents.queryItems = [dateQuery, apiQuery]
+            let pageQuery = URLQueryItem(name: "page", value: "1")
+            urlComponents.queryItems = [dateQuery, apiQuery, pageQuery]
             return urlComponents.url
         }
     }
