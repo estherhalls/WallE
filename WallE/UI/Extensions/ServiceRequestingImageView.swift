@@ -11,25 +11,6 @@ class ServiceRequestingImageView: UIImageView {
     
     let service = APIService()
     
-    func passImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        let request = URLRequest(url: url)
-        service.perform(request) { result in
-            switch result {
-            case .success(let data):
-                guard let image = UIImage(data: data) else {
-                    completion(nil)
-                    return
-                }
-                DispatchQueue.main.async {
-                    completion(image)
-                }
-            case .failure:
-                completion(nil)
-            }
-        }
-    }
-
-    
     func fetchImage(using url: URL) {
         let request = URLRequest(url: url)
         service.perform(request) { [weak self]
