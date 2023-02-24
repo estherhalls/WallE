@@ -33,6 +33,7 @@ class RoverImagesViewModel {
             case .success(let data):
                 DispatchQueue.main.async {
                 self?.topLevel = data
+                    self?.roversArray = []
                     self?.roversArray.append(contentsOf: data.photos)
                     self?.delegate?.updateViews()
                 }
@@ -47,6 +48,7 @@ class RoverImagesViewModel {
             case .success(let data):
                 DispatchQueue.main.async {
                 self?.topLevel = data
+                    self?.roversArray = []
                     self?.roversArray.append(contentsOf: data.photos)
                     self?.delegate?.updateViews()
                 }
@@ -61,6 +63,7 @@ class RoverImagesViewModel {
             case .success(let data):
                 DispatchQueue.main.async {
                 self?.topLevel = data
+                    self?.roversArray = []
                     self?.roversArray.append(contentsOf: data.photos)
                     self?.delegate?.updateViews()
                 }
@@ -69,20 +72,20 @@ class RoverImagesViewModel {
             }
         }
     }
-//    func loadData(from endpoint: Endpoint) {
-//        service.fetchData(from: endpoint) { [weak self] result in
-//            switch result {
-//            case .success(let data):
-//                DispatchQueue.main.async {
-//                self?.topLevel = data
-//                self?.roversArray = data.photos
-//                    self?.delegate?.updateViews()
-//                }
-//            case .failure:
-//                print("There was an error retrieving data from \(endpoint.fullURL!)")
-//            }
-//        }
-//    }
+    func loadData(endpoint: Endpoint) {
+        service.fetchData(from: endpoint) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                self?.topLevel = data
+                self?.roversArray = data.photos
+                    self?.delegate?.updateViews()
+                }
+            case .failure:
+                print("There was an error retrieving data from \(endpoint.fullURL!)")
+            }
+        }
+    }
     
     
 } // End of Class

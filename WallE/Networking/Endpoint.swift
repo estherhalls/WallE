@@ -9,7 +9,6 @@ import Foundation
 
 extension URL {
     /// enum cannot contain stored properties, so adding base URL must be static
-    /// https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
     static let baseURL = URL(string:"https://api.nasa.gov/mars-photos/api/v1/rovers/")
 }
 
