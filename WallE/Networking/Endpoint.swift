@@ -13,10 +13,22 @@ extension URL {
 }
 
 enum Endpoint {
-   
+    // All must take in string for date value
     case curiosity(String)
     case opportunity(String)
     case spirit(String)
+    
+    // String returned for the rover name endpoints
+    var roverComponent: String {
+        switch self {
+        case .curiosity:
+            return "curiosity"
+        case .opportunity:
+            return "opportunity"
+        case .spirit:
+            return "spirit"
+        }
+    }
     
     // Declare Computed Property
     var fullURL: URL? {
@@ -24,26 +36,24 @@ enum Endpoint {
         guard var baseURL = URL.baseURL else {
             return nil
         }
-        /// Switch on self, self being the czase of the enum, and append the correct path component to the url
+        /// Switch on self, self being the case of the enum, and append the correct path component to the url
         switch self {
-        case .curiosity(let curiosity):
-            baseURL.appendPathComponent(curiosity)
-            return baseURL
-        case .opportunity(let opportunity):
-            baseURL.appendPathComponent(opportunity)
-            return baseURL
-        case .spirit(let spirit):
-            baseURL.appendPathComponent(spirit)
-            return baseURL
+        case .curiosity(let dateValue), .opportunity(let dateValue), .spirit(let dateValue):
+            baseURL.appendPathComponent(roverComponent)
+            
+            let photosURL = baseURL.appending(path: "photos")
+            
+            /// Unwrap urlComponents so you can add the api key
+            guard var urlComponents = URLComponents(url: photosURL, resolvingAgainstBaseURL: true) else {
+                return nil
+            }
+            /// Add Query Items
+            let dateQuery = URLQueryItem(name: "earth_date", value: dateValue)
+            // CHANGE DEMO_KEY TO xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6
+            let apiQuery = URLQueryItem(name: "api_key", value: "xdfuqENDMd6cbF4XAx0Gc86gHcUHKPQsMPjPJQr6")
+            let pageQuery = URLQueryItem(name: "page", value: "1")
+            urlComponents.queryItems = [dateQuery, apiQuery, pageQuery]
+            return urlComponents.url
         }
-        
-        let photosURL = baseURL.appending(path: "photos")
-        /// Unwrap urlComponents so you can add the api key
-        guard var urlComponents = URLComponents(url: photosURL, resolvingAgainstBaseURL: true) else {
-            return nil
-        }
-        let dateQuery = URLQueryItem(name: <#T##String#>, value: <#T##String?#>)
-        let apiQuery = URLQueryItem(name: <#T##String#>, value: <#T##String?#>)
-        urlComponents.queryItems
     }
 }
